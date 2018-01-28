@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/name-list/name-list.service';
+import { ApiService } from '../services/api.service';
+import { UserService } from '../services/ui.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -11,46 +13,36 @@ import { NameListService } from '../shared/name-list/name-list.service';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  newName = '';
-  errorMessage: string;
-  names: any[] = [];
+  listUsers: any[] = [];
 
   /**
    * Creates an instance of the HomeComponent with the injected
-   * NameListService.
+   * ApiService.
    *
-   * @param {NameListService} nameListService - The injected NameListService.
+   * @param {ApiService} apiService - The injected ApiService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor(private apiService: ApiService,
+  private userService: UserService,
+  private router: Router) {}
 
   /**
    * Get the names OnInit
    */
   ngOnInit() {
-    this.getNames();
+    this.getAllUsers();
   }
 
-  /**
-   * Handle the nameListService observable
-   */
-  getNames() {
-    this.nameListService.get()
-      .subscribe(
-        names => this.names = names,
-        error => this.errorMessage = <any>error
-      );
+  getAllUsers() {
+    this.apiService.getUsers().subscribe(responseInformation => {
+            this.listUsers = responseInformation;
+            console.log(this.listUsers)
+        });
   }
 
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
-    return false;
+  goToUser(user) {
+    this.userService.currentUser = user;
+    this.userService.currentUserTitle = user.login;
+    this.router.navigate(['/about']);
   }
 
 }

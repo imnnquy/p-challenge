@@ -1,10 +1,6 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+<h1>Top 5 Github Users</h1>
+<p>Tap the user name to see more information</p>
 
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
-
-<ul>
-  <li *ngFor="let name of names">{{ name }}</li>
-</ul>
+<div>
+  <button (click)="goToUser(user)" class="btn btn-info user-button" *ngFor="let user of listUsers">{{ user.login }}</button>
+</div>
