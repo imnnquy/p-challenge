@@ -1,2 +1,7 @@
-
-<h1>{{currentTitle}}</h1>
+<h1>
+    <a *ngIf="!isHome" class="back" (click)="goToHome()">
+        <svg width="24px" height="24px" viewBox="0 0 80 80">
+            <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
+	45.63,75.8 0.375,38.087 45.63,0.375 "></polyline>
+        </svg>
+    </a>{{currentTitle}}</h1>

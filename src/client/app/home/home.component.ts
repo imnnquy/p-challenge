@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   goToUser(user) {
     this.userService.currentUser = user;
-    this.userService.currentUserTitle = user.login;
+    this.userService.setCurrentUserTitle(user.login);
     this.router.navigate(['/about']);
   }
 
