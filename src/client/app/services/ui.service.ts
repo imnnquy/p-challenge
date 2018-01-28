@@ -8,13 +8,11 @@ export class UserService {
   public notificationsStream = new Subject<string>();
 
   public currentUser: any = {};
-  public currentUserTitle: string = "Current User";
-
-  constructor(){}
+  public currentUserTitle = 'Current User';
 
   setCurrentUserTitle(newTitle: string) {
       this.currentUserTitle = newTitle;
-      this.notificationsStream.next("change-title");
+      this.notificationsStream.next('change-title');
   }
 
   getCurrentUserTitle() {

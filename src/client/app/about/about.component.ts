@@ -10,11 +10,11 @@ import { UserService } from '../services/ui.service';
   templateUrl: 'about.component.html',
   styleUrls: ['about.component.css']
 })
-export class AboutComponent { 
+export class AboutComponent {
 
   currentUser: any = {};
 
-    constructor(private userService: UserService) {
-      this.currentUser = this.userService.currentUser;
-    }
+  constructor(private userService: UserService) {
+    this.currentUser = this.userService.currentUser;
+  }
 }

@@ -24,8 +24,8 @@ export class ApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @returns {Observable<any[]>}
    */
-  getUsers(): any{
-    let requests = this.listUsers.map((user) => this.http.get(this.baseURL + user))
+  getUsers(): any {
+    const requests = this.listUsers.map((user) => this.http.get(this.baseURL + user));
     return Observable.forkJoin(requests);
   }
 

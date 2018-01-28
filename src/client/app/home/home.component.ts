@@ -33,13 +33,13 @@ export class HomeComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.apiService.getUsers().subscribe(responseInformation => {
+    this.apiService.getUsers().subscribe((responseInformation: any) => {
             this.listUsers = responseInformation;
-            console.log(this.listUsers)
+            console.log(this.listUsers);
         });
   }
 
-  goToUser(user) {
+  goToUser(user: any) {
     this.userService.currentUser = user;
     this.userService.setCurrentUserTitle(user.login);
     this.router.navigate(['/about']);
