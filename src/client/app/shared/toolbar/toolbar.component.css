@@ -21,3 +21,13 @@ h1 {
   margin-top: 12px;
   width: 24px;
 }
+.toolbar-title {
+  display: flex;
+  margin: 0px;
+}
+.title-name {
+  line-height: 46px;
+}
+.back {
+  line-height: 58px;
+}
