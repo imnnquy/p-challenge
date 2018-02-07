@@ -1,11 +1,21 @@
 // user.service.ts
 import { Injectable, Inject } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
 
-  public currentUser: any = {};
-  public currentUserTitle: string = "Current User";
+  public notificationsStream = new Subject<string>();
 
-  constructor(){}
+  public currentUser: any = {};
+  public currentUserTitle = 'Current User';
+
+  setCurrentUserTitle(newTitle: string) {
+      this.currentUserTitle = newTitle;
+      this.notificationsStream.next('change-title');
+  }
+
+  getCurrentUserTitle() {
+    return this.currentUserTitle;
+  }
 }
